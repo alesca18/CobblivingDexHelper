@@ -3,6 +3,8 @@ package org.main.cobblivingdexhelper.network;
 import com.cobblemon.mod.common.Cobblemon;
 import com.cobblemon.mod.common.api.storage.pc.PCPosition;
 import com.cobblemon.mod.common.api.storage.pc.PCStore;
+import com.cobblemon.mod.common.client.CobblemonClient;
+import com.cobblemon.mod.common.client.storage.ClientPC;
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import com.cobblemon.mod.common.pokemon.Species;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -51,7 +53,7 @@ public record SortPCPayload() implements CustomPacketPayload {
         }
         System.out.println("Server: Ordinamento PC richiesto da " + player.getName().getString());
 
-
+        ClientPC clientPC = CobblemonClient.INSTANCE.getStorage().getPcStores().get(player.getUUID());
         // --- LOGICA ORDINAMENTO ---
         List<Pokemon> allPokemon = new ArrayList<>();
         // Usa 40 box come richiesto
@@ -71,7 +73,8 @@ public record SortPCPayload() implements CustomPacketPayload {
 
                 if (pkm != null) {
                     allPokemon.add(pkm);
-                    serverPC.remove(pkm);
+                   // serverPC.remove(pkm);
+                    clientPC.remove(pkm.getUuid());
                 }
             }
         }
@@ -103,11 +106,13 @@ public record SortPCPayload() implements CustomPacketPayload {
 
                 if (box < 40) {
                     PCPosition targetPos = new PCPosition(box, slot);
-                    Pokemon existing = serverPC.get(targetPos);
+                    //Pokemon existing = serverPC.get(targetPos);
+                    Pokemon existing = clientPC.get(targetPos);
                     if (existing != null) {
                         duplicates.add(existing);
                     }
-                    serverPC.set(targetPos, pkm);
+                   // serverPC.set(targetPos, pkm);
+                    clientPC.set(targetPos,pkm);
                 } else {
                     duplicates.add(pkm);
                 }
@@ -117,6 +122,7 @@ public record SortPCPayload() implements CustomPacketPayload {
         }
 
         // Piazza Duplicati
+        /*
         int box = serverPC.getBoxes().size() - 1;
         int slot = 0;
 
@@ -138,6 +144,10 @@ public record SortPCPayload() implements CustomPacketPayload {
             if (!placed) {
                 System.err.println("PC Full! Could not place " + pkm.getSpecies().getName());
             }
+
+
         }
+
+         */
     }
 }
