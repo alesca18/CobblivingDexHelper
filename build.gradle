@@ -1,0 +1,120 @@
+plugins {
+    id 'fabric-loom' version '1.13-SNAPSHOT'
+    id 'maven-publish'
+    // Aggiungi il plugin Kotlin JVM se stai compilando anche classi Kotlin o miste
+    id 'org.jetbrains.kotlin.jvm' version '2.0.0' // Usa una versione recente
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+loom {
+    // Questo è fondamentale quando si usano le Mojang Mappings
+    // Dice a Loom di generare i file di configurazione corretti per l'IDE
+    runConfigs.configureEach {
+        ideConfigGenerated(true)
+    }
+}
+
+fabricApi {
+    configureDataGeneration {
+        client = true
+    }
+}
+
+repositories {
+    mavenCentral()
+
+    // Repository ufficiale Modrinth (semplificato)
+    maven {
+        name = "Modrinth"
+        url = "https://api.modrinth.com/maven"
+    }
+    // Repository per Cobblemon e dipendenze correlate
+    maven {
+        name = "ImpactDev"
+        url = "https://maven.impactdev.net/repository/development/"
+    }
+    // Aggiungi questo se usi librerie Kotlin specifiche di Fabric
+    maven {
+        name = "Kotlin for Forge/Fabric"
+        url = "https://thedarkcolour.github.io/KotlinForForge/"
+    }
+}
+
+dependencies {
+    // 1. Minecraft & Mappings
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings loom.officialMojangMappings()
+
+    // 2. Fabric Loader
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+
+    // 3. Fabric Language Kotlin (Essenziale per Cobblemon)
+    // Assicurati che nel gradle.properties fabric_kotlin_version sia definito (es. 1.12.0+kotlin.2.0.20)
+    modImplementation "net.fabricmc:fabric-language-kotlin:1.12.1+kotlin.2.0.20"
+
+    // 4. Fabric API
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+    // 5. COBBLEMON
+    // L'uso di modImplementation qui DEVE innescare il remapping automatico
+    modImplementation("com.cobblemon:mod:${project.cobblemon_version}")
+
+    // Librerie standard Kotlin (necessarie per la compilazione mista Java/Kotlin)
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.0.20"
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "minecraft_version", project.minecraft_version
+    inputs.property "loader_version", project.loader_version
+    filteringCharset "UTF-8"
+
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version,
+                "minecraft_version": project.minecraft_version,
+                "loader_version": project.loader_version
+    }
+}
+
+// Configurazione Java
+def targetJavaVersion = 21
+tasks.withType(JavaCompile).configureEach {
+    it.options.encoding = "UTF-8"
+    it.options.release.set(targetJavaVersion)
+}
+
+// Configurazione Kotlin (Aggiungi questo blocco per sicurezza)
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+    kotlinOptions {
+        jvmTarget = targetJavaVersion
+    }
+}
+
+java {
+    def javaVersion = JavaVersion.toVersion(targetJavaVersion)
+    if (JavaVersion.current() < javaVersion) {
+        toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+    }
+    withSourcesJar()
+}
+
+jar {
+    from("LICENSE") {
+        rename { "${it}_${project.archivesBaseName}" }
+    }
+}
+
+publishing {
+    publications {
+        create("mavenJava", MavenPublication) {
+            artifactId = project.archives_base_name
+            from components.java
+        }
+    }
+}

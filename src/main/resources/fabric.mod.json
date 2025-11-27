@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "cobblivingdexhelper",
+  "version": "${version}",
+  "name": "CobblivingDexHelper",
+  "description": "Helper per il Living Dex di Cobblemon",
+  "authors": ["alesca18"],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/cobblivingdexhelper/textures/pc/pc_icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "org.main.cobblivingdexhelper.client.CobblivingDexHelperDataGenerator"
+    ],
+    "client": [
+      "org.main.cobblivingdexhelper.client.CobblivingDexHelperClient"
+    ],
+    "main": [
+      "org.main.cobblivingdexhelper.CobblivingDexHelper"
+    ]
+  },
+  "mixins": [
+    "cobblivingdexhelper.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
