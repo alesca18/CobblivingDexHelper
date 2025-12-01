@@ -16,6 +16,8 @@ import net.minecraft.server.level.ServerPlayer;
 import java.lang.reflect.Method;
 import java.util.*;
 
+import static org.main.cobblivingdexhelper.client.CobblivingDexHelperClient.isOverlayEnabled;
+
 public record SortPCPayload() implements CustomPacketPayload {
 
     // Aggiornato Namespace: cobblemonsorter -> cobblivingdexhelper
@@ -54,19 +56,29 @@ public record SortPCPayload() implements CustomPacketPayload {
         System.out.println("Server: Ordinamento PC richiesto da " + player.getName().getString());
 
         ClientPC clientPC = CobblemonClient.INSTANCE.getStorage().getPcStores().get(player.getUUID());
+
+        if(!isOverlayEnabled)
+        {
+
+            syncServerToClient(serverPC,clientPC);
+
+            return;
+        }
+
         // --- LOGICA ORDINAMENTO ---
         List<Pokemon> allPokemon = new ArrayList<>();
         // Usa 40 box come richiesto
         for (int box = 0; box < 40; box++) {
 
             // Check box esistenti e nomi "box"
+            /*
             if(serverPC.getBoxes().size() > box && serverPC.getBoxes().get(box) != null) {
                 String boxName = serverPC.getBoxes().get(box).getName();
                 if (boxName != null && boxName.toLowerCase().contains("box")) {
                     continue; // Salta i box protetti
                 }
             }
-
+*/
             for (int slot = 0; slot < 30; slot++) {
                 PCPosition currentPos = new PCPosition(box, slot);
                 Pokemon pkm = serverPC.get(currentPos);
@@ -149,5 +161,31 @@ public record SortPCPayload() implements CustomPacketPayload {
         }
 
          */
+    }
+    private static void syncServerToClient(PCStore serverPC, ClientPC clientPC) {
+        // Itera su tutti i box disponibili nel serverPC
+        // Usa serverPC.getBoxes().size() per sicurezza, ma di solito sono 40
+        for (int box = 0; box < serverPC.getBoxes().size(); box++) {
+
+            // Itera su tutti gli slot (30 per box in Cobblemon standard)
+            for (int slot = 0; slot < 30; slot++) {
+                PCPosition pos = new PCPosition(box, slot);
+
+                // Ottieni il Pokemon dal Server Storage (la fonte di verità)
+                Pokemon serverPkm = serverPC.get(pos);
+
+                // Aggiorna il Client Storage
+                if (serverPkm != null) {
+                    // Se c'è un Pokemon nel server, impostalo nel client alla stessa posizione
+                    clientPC.set(pos, serverPkm);
+                } else {
+                    // Se lo slot è vuoto nel server, assicurati che sia vuoto anche nel client
+                    // (Rimuove eventuali "pokemon fantasma" rimasti dalla vecchia visualizzazione)
+                    if (clientPC.get(pos) != null) {
+                        clientPC.set(pos, null);
+                    }
+                }
+            }
+        }
     }
 }

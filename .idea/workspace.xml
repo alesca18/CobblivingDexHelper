@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c46f811-9b9d-449c-a001-06fc191e5e96" name="Changes" comment="TEts">
+    <list default="true" id="2c46f811-9b9d-449c-a001-06fc191e5e96" name="Changes" comment="commit visulizzazione">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cobblivingdexhelper/textures/pc/sort_button_disable.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/main/cobblivingdexhelper/CobblivingDexHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/main/cobblivingdexhelper/CobblivingDexHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/main/cobblivingdexhelper/client/CobblivingDexHelperClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/main/cobblivingdexhelper/client/CobblivingDexHelperClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/main/cobblivingdexhelper/mixins/PCGUIMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/main/cobblivingdexhelper/mixins/PCGUIMixin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/main/cobblivingdexhelper/network/SortPCPayload.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/main/cobblivingdexhelper/network/SortPCPayload.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,7 +64,7 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/alesca18/CobblemonSorter.git&quot;,
+    &quot;url&quot;: &quot;https://github.com/alesca18/CobblivingDexHelper&quot;,
     &quot;accountId&quot;: &quot;b48b1c94-1ecf-4fbc-b74d-e9946de189d9&quot;
   }
 }</component>
@@ -95,10 +99,15 @@
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/alesc/Desktop/minecraft/Sviluppo/ProgettoAZ/CobblivingDexHelper&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/alesc/Desktop/minecraft/Sviluppo/ProgettoAZ/CobblivingDexHelper/src/main/resources/assets/cobblivingdexhelper/textures/pc&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;editor.reader.mode&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\alesc\Desktop\minecraft\Sviluppo\ProgettoAZ\CobblivingDexHelper\src\main\resources\assets\cobblivingdexhelper\textures\pc" />
+    </key>
+  </component>
   <component name="RunManager" selected="Gradle.CobblemonSorter [build]">
     <configuration name="CobblemonSorter [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -229,7 +238,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764172625268</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="commit visulizzazione">
+      <option name="closed" value="true" />
+      <created>1764247934761</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1764247934761</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -245,7 +262,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="s" />
-    <option name="LAST_COMMIT_MESSAGE" value="s" />
+    <MESSAGE value="commit visulizzazione" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit visulizzazione" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

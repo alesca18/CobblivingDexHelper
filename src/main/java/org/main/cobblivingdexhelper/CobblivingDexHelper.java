@@ -3,6 +3,7 @@ package org.main.cobblivingdexhelper;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import org.apache.logging.log4j.core.jmx.Server;
 import org.main.cobblivingdexhelper.network.SortPCPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +15,7 @@ public class CobblivingDexHelper implements ModInitializer {
 
     @Override
     public void onInitialize() {
+
         LOGGER.info("CobblivingDexHelper si sta avviando!");
 
         PayloadTypeRegistry.playC2S().register(SortPCPayload.ID, SortPCPayload.CODEC);
@@ -24,4 +26,6 @@ public class CobblivingDexHelper implements ModInitializer {
             });
         });
     }
+
+
 }
