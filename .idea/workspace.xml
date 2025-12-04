@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c46f811-9b9d-449c-a001-06fc191e5e96" name="Changes" comment="commit visulizzazione">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cobblivingdexhelper/textures/pc/sort_button_disable.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/main/cobblivingdexhelper/CobblivingDexHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/main/cobblivingdexhelper/CobblivingDexHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/main/cobblivingdexhelper/client/CobblivingDexHelperClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/main/cobblivingdexhelper/client/CobblivingDexHelperClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/main/cobblivingdexhelper/mixins/PCGUIMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/main/cobblivingdexhelper/mixins/PCGUIMixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/main/cobblivingdexhelper/network/SortPCPayload.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/main/cobblivingdexhelper/network/SortPCPayload.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/main/cobblivingdexhelper/network/SortPCPayload.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
