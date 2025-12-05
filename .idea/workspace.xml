@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c46f811-9b9d-449c-a001-06fc191e5e96" name="Changes" comment="commit visulizzazione">
+    <list default="true" id="2c46f811-9b9d-449c-a001-06fc191e5e96" name="Changes" comment="Prove funzionamento pokedex">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/main/cobblivingdexhelper/CobblivingDexHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/main/cobblivingdexhelper/CobblivingDexHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/main/cobblivingdexhelper/mixins/PCGUIMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/main/cobblivingdexhelper/mixins/PCGUIMixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/main/cobblivingdexhelper/network/SortPCPayload.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,7 +242,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764247934761</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Prove funzionamento pokedex">
+      <option name="closed" value="true" />
+      <created>1764862948751</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1764862948751</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -261,7 +267,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="s" />
     <MESSAGE value="commit visulizzazione" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit visulizzazione" />
+    <MESSAGE value="Prove funzionamento pokedex" />
+    <option name="LAST_COMMIT_MESSAGE" value="Prove funzionamento pokedex" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
